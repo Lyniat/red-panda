@@ -1,6 +1,6 @@
 {
   "name": "discord-sail",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Starbound bot for Discord",
   "private": true,
   "scripts": {
@@ -31,7 +31,7 @@
   "dependencies": {
     "argv": "0.0.2",
     "discord.io": "~1.13.4",
-    "starbound.js": "0.0.2",
+    "starbound.js": "0.1.0",
     "winston": "~2.2.0",
     "yargs": "~4.8.1"
   }
