@@ -4,6 +4,7 @@ import winston from 'winston';
 import SAIL from './sail';
 import argv from './argv';
 
+const hiSail = /^(?:hi|hello|aloha) s\.?a\.?i\.?l\.?/i;
 const whosPlaying = /^(?:who(?:'?s|se| is)|(?:is )?anyone) (?:online|playing)\??$/i;
 
 // logging
@@ -57,8 +58,7 @@ bot.on('message', function(user, userId, channelId, message, event) {
   if (user == 'Baughb' && /^!announce(?:ment)?\s+(.+)$/i.test(message) && sb.connected) {
     winston.info('Sending announcement to Starbound: %s', RegExp.$1);
     sb.broadcast(RegExp.$1);
-  }
-  if (whosPlaying.test(message)) {
+  } else if (whosPlaying.test(message)) {
     if (sb.connected) {
       winston.info('Getting list of Starbound players...');
       sb.listUsers(function(message) {
@@ -71,6 +71,8 @@ bot.on('message', function(user, userId, channelId, message, event) {
     } else {
       bot.sendMessage({to: channelId, message: SAIL.serverIsDown});
     }
+  } else if (hiSail.test(message)) {
+    bot.sendMessage({to: channelId, message: SAIL.greetings});
   }
 });
 
