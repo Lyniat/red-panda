@@ -98,7 +98,7 @@ function sbReconnect() {
 function setStarboundStatus() {
   if (bot.connected) {
     if (sb.connected) {
-      bot.setPresence({game: {name: 'Starbound'}});
+      bot.setPresence({game: 'Starbound'});
     } else {
       bot.setPresence({idle_since: Date.now()});
     }
