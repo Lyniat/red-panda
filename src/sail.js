@@ -39,7 +39,9 @@ export default {
 
     if (list.length > 1) {
       const msg = randomMessage(userListMessages);
-      const users = list.slice(0, -1).join(', ') + ', and ' + list.slice(-1);
+      const users = list.length == 2
+        ? list.join(' and ')
+        : list.slice(0, -1).join(', ') + ', and ' + list.slice(-1);
       return msg.replace('%s', users);
     } else {
       const msg = randomMessage(singularUserMessages);

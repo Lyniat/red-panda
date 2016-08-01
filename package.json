@@ -1,6 +1,6 @@
 {
   "name": "discord-sail",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Starbound bot for Discord",
   "private": true,
   "scripts": {
