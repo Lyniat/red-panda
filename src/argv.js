@@ -15,7 +15,7 @@ export default yargs
   .option('H', {
     alias: 'host',
     default: 'localhost',
-    describe: 'Starbound Host',
+    describe: 'RED PANDA Host',
     nargs: 1,
     requiresArg: true,
     type: 'string'
@@ -23,7 +23,7 @@ export default yargs
   .option('P', {
     alias: 'port',
     default: 21026,
-    describe: "Starbound's RCON Port",
+    describe: "RED PANDA RCON Port",
     nargs: 1,
     number: true,
     requiresArg: true,
@@ -31,8 +31,8 @@ export default yargs
   })
   .option('p', {
     alias: 'password',
-    demand: 'You must provide your Starbound RCON Password',
-    describe: 'Starbound RCON Password',
+    demand: 'You must provide your RED PANDA RCON Password',
+    describe: 'RED PANDA RCON Password',
     nargs: 1,
     requiresArg: true,
     type: 'string'

@@ -1,10 +1,10 @@
 {
-  "name": "bmatcuk/discord-sail",
+  "name": "lyniat/red-panda",
   "version": "0.1.4",
   "libraries": {
     "xv": "^1.1.19"
   },
-  "title": "Discord S.A.I.L.",
+  "title": "Discord RED PANDA",
   "branch": "master",
   "style": {
     "name": "Material",
@@ -39,29 +39,29 @@
       "component": "nav",
       "links": [
         {
-          "href": "https://github.com/bmatcuk/discord-sail",
+          "href": "https://github.com/Lyniat/red-panda",
           "text": "GitHub"
         },
         {
-          "href": "https://npmjs.com/package/discord-sail",
+          "href": "https://github.com/Lyniat/red-panda",
           "text": "npm"
         }
       ]
     },
     {
       "component": "header",
-      "heading": "discord-sail",
-      "subhead": "S.A.I.L. bot for Discord",
+      "heading": "discord-red-panda",
+      "subhead": "RED PANDA bot for Discord",
       "children": [
         {
           "component": "ui/TweetButton",
-          "text": "discord-sail: S.A.I.L. bot for Discord",
+          "text": "discord-sail: RED PANDA bot for Discord",
           "url": null
         },
         {
           "component": "ui/GithubButton",
-          "user": "bmatcuk",
-          "repo": "discord-sail"
+          "user": "lyniat",
+          "repo": "red-panda"
         }
       ],
       "text": "v0.0.3"
@@ -77,12 +77,12 @@
       "component": "footer",
       "links": [
         {
-          "href": "https://github.com/bmatcuk/discord-sail",
+          "href": "https://github.com/Lyniat/red-panda",
           "text": "GitHub"
         },
         {
-          "href": "https://github.com/bmatcuk",
-          "text": "bmatcuk"
+          "href": "https://github.com/Lyniat/red-panda",
+          "text": "lyniat"
         }
       ]
     }

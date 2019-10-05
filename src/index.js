@@ -1,6 +1,4 @@
 import {Client as DiscordClient} from 'discord.io';
-import Starbound from 'starbound.js';
-import winston from 'winston';
 import SAIL from './sail';
 import argv from './argv';
 
@@ -8,6 +6,7 @@ const hiSail = /^(?:hi|hello|aloha) s\.?a\.?i\.?l\.?/i;
 const whosPlaying = /^(?:who(?:'?s|se| is)|(?:is )?any\s?one) (?:on(?:line)?|playing)\??$/i;
 
 // logging
+/*
 const logTransports = [
   new winston.transports.Console({timestamp: true, colorize: true}),
 ];
@@ -15,8 +14,10 @@ if (argv.log)
   logTransports.push(new winston.transport.File({timestamp: true, filename: argv.log}));
 const logger = new winston.Logger({level: argv.loglevel, transports: logTransports});
 
-logger.info('Starting up...');
-logger.info('loglevel: %s', logger.level);
+*/
+
+//logger.info('Starting up...');
+//logger.info('loglevel: %s', logger.level);
 
 
 
@@ -39,14 +40,14 @@ const bot = new DiscordClient({token: argv.token});
 let botReconnectTimeout = null;
 let botReconnectBackoff = 5000;
 function botReconnect() {
-  logger.info('Trying to connect to Discord...');
+  //logger.info('Trying to connect to Discord...');
   bot.connect();
   botReconnectBackoff = Math.min(botReconnectBackoff * 2, 600000);
   botReconnectTimeout = setTimeout(botReconnect, botReconnectBackoff);
 }
 
 bot.on('ready', function(event) {
-  logger.info('Connected to Discord as %s (%s)', bot.username, bot.id.toString());
+  //logger.info('Connected to Discord as %s (%s)', bot.username, bot.id.toString());
   setStarboundStatus();
 
   botReconnectBackoff = 10000;
@@ -57,17 +58,17 @@ bot.on('ready', function(event) {
 });
 
 bot.on('message', function(user, userId, channelId, message, event) {
-  logger.debug('Received message:', {user, userId, channelId, message, event});
+  //logger.debug('Received message:', {user, userId, channelId, message, event});
   if (user == 'Baughb' && /^!announce(?:ment)?\s+(.+)$/i.test(message) && sb.connected) {
-    logger.info('Sending announcement to Starbound: %s', RegExp.$1);
+    //logger.info('Sending announcement to Starbound: %s', RegExp.$1);
     sb.broadcast(RegExp.$1);
   } else if (whosPlaying.test(message)) {
     if (sb.connected) {
-      logger.info('Getting list of Starbound players...');
+      //logger.info('Getting list of Starbound players...');
       sb.listUsers(function(message) {
         if (bot.connected) {
           const users = message.users.map(u => u.username);
-          logger.info('Users found:', {users});
+          //logger.info('Users found:', {users});
           bot.sendMessage({to: channelId, message: SAIL.users(users)});
         }
       });
@@ -80,7 +81,7 @@ bot.on('message', function(user, userId, channelId, message, event) {
 });
 
 bot.on('disconnect', function() {
-  logger.info('Disconnected from Discord');
+  //logger.info('Disconnected from Discord');
   if (!maybeShutdown() && !botReconnectTimeout)
     botReconnectTimeout = setTimeout(botReconnect, botReconnectBackoff);
 });
@@ -104,7 +105,7 @@ let sbPingInterval = null;
 function sbPing() {
   if (sb.connected) {
     sb.echo('ping', function(message) {
-      logger.debug('Starbound ping/pong');
+      //logger.debug('Starbound ping/pong');
     });
   }
 }
@@ -121,13 +122,13 @@ function setStarboundStatus() {
 
 sb.on('connect', function(successful) {
   if (successful) {
-    logger.info('Connected to Starbound');
-    setStarboundStatus();
+    //logger.info('Connected to Starbound');
+    //setStarboundStatus();
 
     if (sbPingInterval === null)
       sbPingInterval = setInterval(sbPing, 30000);
   } else {
-    logger.error('Could not authenticate with Starbound');
+    //logger.error('Could not authenticate with Starbound');
     cleanup();
   }
 
@@ -140,22 +141,22 @@ sb.on('connect', function(successful) {
 
 if (argv.loglevel == 'debug') {
   sb.on('message', function(message) {
-    logger.debug('Starbound message:', {msg: JSON.stringify(message)});
+    //logger.debug('Starbound message:', {msg: JSON.stringify(message)});
   });
 }
 
 sb.on('error', function(err) {
-  logger.error('Starbound error:', {err});
+  //logger.error('Starbound error:', {err});
 });
 
 sb.on('close', function() {
-  logger.info('Disconnected from Starbound');
+  //logger.info('Disconnected from Starbound');
   if (sbPingInterval) {
     clearInterval(sbPingInterval);
     sbPingInterval = null;
   }
   if (!maybeShutdown() && !sbReconnectTimeout) {
-    setStarboundStatus();
+    //setStarboundStatus();
     sbReconnectTimeout = setTimeout(sbReconnect, sbReconnectBackoff);
   }
 });
@@ -168,9 +169,9 @@ sbReconnect();
 function cleanup(err) {
   shutdown = true;
   if (err)
-    logger.error('Uncaught Exception:', {err});
+    //logger.error('Uncaught Exception:', {err});
 
-  logger.info('Shutting down...');
+  //logger.info('Shutting down...');
   if (bot.connected)
     bot.disconnect();
   if (sb.connected)
@@ -189,7 +190,7 @@ function cleanup(err) {
   // we'll wait a second to see if we can gracefully shutdown...
   if (err) {
     setTimeout(function() {
-      logger.warn('Forcibly shutting down...');
+      //logger.warn('Forcibly shutting down...');
       process.exit();
     }, 1000);
   }

@@ -1,28 +1,23 @@
 const greetingMessages = [
-  "I am S.A.I.L, your Ship-based Artificial Intelligence Lattice."
+  "I am Streifi, your cute little discord manager."
 ];
 
 const serverDownMessages = [
-  "That's outside my scanner's detection area.",
-  "Reboot process remains uninitiated.",
-  "Earth was attacked by an unknown force, and was subsequently annihilated."
+  "Went out of bamboo."
 ];
 
 const nooneOnlineMessages = [
-  "The universe is a lonely place.",
-  "My sensors indicate that there is little life."
+  "The Himalaya is a lonely place."
 ];
 
 const userListMessages = [
-  "My sensors have located the following sentient lifeforms: %s",
-  "%s make the universe less lonely.",
-  "%s are exploring the vast infinite."
+  "%s make the Himalaya less lonely.",
+  "%s are exploring the snow covered bamboo forest."
 ];
 
 const singularUserMessages = [
-  "My sensors have located the following sentient lifeform: %s",
-  "%s makes the universe less lonely.",
-  "%s is exploring the vast infinite."
+  "%s makes the Himalaya less lonely.",
+  "%s is exploring the snow covered bamboo forest."
 ];
 
 function randomMessage(messages) {

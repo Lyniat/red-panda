@@ -1,7 +1,7 @@
 {
-  "name": "discord-sail",
+  "name": "discord-red-panda",
   "version": "0.0.3",
-  "description": "A Starbound bot for Discord",
+  "description": "A red panda bot for Discord",
   "private": true,
   "scripts": {
     "build": "babel src -d build",
@@ -10,19 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmatcuk/discord-sail.git"
+    "url": "git+https://github.com/Lyniat/red-panda"
   },
   "keywords": [
     "discord",
-    "starbound",
-    "bot"
+    "lyniat",
+    "bot",
+    "red panda"
   ],
-  "author": "Bob Matcuk <npm@squeg.net> (http://squeg.net)",
+  "author": "Bob Matcuk <npm@squeg.net> (http://squeg.net) , Laurin Muth <dev@lyniat.games> (https://lyniat.games)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bmatcuk/discord-sail/issues"
+    "url": "https://github.com/Lyniat/red-panda/issues"
   },
-  "homepage": "https://github.com/bmatcuk/discord-sail#readme",
+  "homepage": "https://github.com/Lyniat/red-panda#readme",
   "devDependencies": {
     "babel-cli": "~6.11.4",
     "babel-preset-es2015": "~6.9.0",
